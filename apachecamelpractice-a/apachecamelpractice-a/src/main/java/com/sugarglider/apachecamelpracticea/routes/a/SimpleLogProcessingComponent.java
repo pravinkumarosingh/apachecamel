@@ -4,6 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * This class is processing component for camel
+ */
+
 @Component
 public class SimpleLogProcessingComponent {
 	

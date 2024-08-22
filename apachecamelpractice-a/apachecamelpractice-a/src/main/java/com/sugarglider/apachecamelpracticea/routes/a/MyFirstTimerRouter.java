@@ -9,6 +9,7 @@ public class MyFirstTimerRouter extends RouteBuilder {
 	
 	@Autowired
 	private GetCurrentTimeBean getCurrentTimeBean;
+
 	@Autowired
 	private SimpleLogProcessingComponent simpleLogProcessingComponent;
 	
