@@ -26,10 +26,15 @@ public class ActiveMqReceiverRouter extends RouteBuilder {
 		// TODO Auto-generated method stub
 		//from("activemq:my-active-mq").to("log:recevied message from activemq");
 
+//		from("activemq:my-active-mq")
+//				.unmarshal().json(JsonLibrary.Jackson, Person.class)
+//				.bean(personProcessor)
+//				.bean(personTransformer)
+//				.to("log:recevied message from activemq");
+
 		from("activemq:my-active-mq")
-				.unmarshal().json(JsonLibrary.Jackson, Person.class)
-				.bean(personProcessor)
-				.bean(personTransformer)
+				.unmarshal()
+				.jacksonXml(Person.class)
 				.to("log:recevied message from activemq");
 	}
 	
