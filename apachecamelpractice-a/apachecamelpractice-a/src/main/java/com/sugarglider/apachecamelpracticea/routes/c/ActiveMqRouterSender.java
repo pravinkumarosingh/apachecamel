@@ -9,7 +9,9 @@ public class ActiveMqRouterSender extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		// TODO Auto-generated method stub
-		from("timer:activemq-timer?period=10000").transform().constant("my message for activemq").to("activemq:my-active-mq");
+		//from("timer:activemq-timer?period=10000").transform().constant("my message for activemq").to("activemq:my-active-mq");
+
+		from("file:files/input").log("${body}").to("activemq:my-active-mq");
 	}
 	
 
