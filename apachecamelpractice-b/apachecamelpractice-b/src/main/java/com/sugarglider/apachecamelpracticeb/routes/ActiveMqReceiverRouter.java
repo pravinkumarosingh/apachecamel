@@ -8,7 +8,7 @@ import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class ActiveMqReceiverRouter extends RouteBuilder {
 
 	@Autowired
@@ -26,16 +26,16 @@ public class ActiveMqReceiverRouter extends RouteBuilder {
 		// TODO Auto-generated method stub
 		//from("activemq:my-active-mq").to("log:recevied message from activemq");
 
-//		from("activemq:my-active-mq")
-//				.unmarshal().json(JsonLibrary.Jackson, Person.class)
-//				.bean(personProcessor)
-//				.bean(personTransformer)
-//				.to("log:recevied message from activemq");
-
 		from("activemq:my-active-mq")
-				.unmarshal()
-				.jacksonXml(Person.class)
+				.unmarshal().json(JsonLibrary.Jackson, Person.class)
+				.bean(personProcessor)
+				.bean(personTransformer)
 				.to("log:recevied message from activemq");
+
+//		from("activemq:my-active-mq")
+//				.unmarshal()
+//				.jacksonXml(Person.class)
+//				.to("log:recevied message from activemq");
 	}
 	
 }
